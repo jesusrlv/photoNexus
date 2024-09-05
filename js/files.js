@@ -62,7 +62,7 @@ function _(el) {
 
     // var texto = concatenado.toString();
     // var texto = document.getElementById('photoRuta').value;
-    var texto = 'nexustechstudio.com/photonexus/docs/'+valor;
+    var texto = 'nexustechstudio.com/photoNexus/docs/'+valor;
     document.getElementById('qrcode'+num).innerHTML = "";
 // aquí
 
