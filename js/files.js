@@ -46,3 +46,52 @@ function _(el) {
       }
     
   }
+
+  function queryPhotos(){
+    $.ajax({
+        type: "POST",
+        url: "prcd/queryPhotos.php",
+        dataType: "html",
+        success: function(data){
+            $('#photosN').fadeIn(1000).html(data);
+        }
+    });
+}
+
+  function ModalQr(valor, num){
+
+    // var texto = concatenado.toString();
+    // var texto = document.getElementById('photoRuta').value;
+    var texto = valor;
+    document.getElementById('qrcode'+num).innerHTML = "";
+// aquí
+
+var qrcode = new QRCode(document.getElementById("qrcode"+num), {
+      text: texto,
+      // width: 100%,
+      // height: 100%,
+      correctLevel: QRCode.CorrectLevel.Q
+    });
+
+    // Obtener el elemento canvas generado por QRCode.js
+    var canvas = document.querySelector("#codigo-qr canvas");
+
+    // Crear un nuevo elemento de imagen para el logo
+    var logo = new Image();
+    logo.src = "imagen.png";
+
+    // Esperar a que el logo se cargue antes de dibujarlo en el canvas
+    logo.onload = function() {
+      // Calcular la posición del logo en el centro del código QR
+      var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
+      var xPos = (canvas.width - logoSize) / 2;
+      var yPos = (canvas.height - logoSize) / 2;
+
+      // Dibujar el logo en el canvas
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
+    };
+
+    console.log();
+
+  }
