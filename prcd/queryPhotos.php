@@ -9,10 +9,10 @@ while ($row = $resultadoSql->fetch_assoc()) {
     echo'
     <tr>
         <td>'.$x.'</td>
-        <td><img src="docs/'.$row['ruta'].'" width="50"></td>
-        <td><span id="qrcode'.$row['id'].'"></span></td>
+        <td><img src="docs/'.$row['ruta'].'" width="100" class="p-2"></td>
+        <td class="text-center"><span class="text-center" id="qrcode'.$row['id'].'"></span></td>
         <td>
-            <input value="'.$row['ruta'].'"  id="photoRuta'.$row['id'].'">
+            <input value="'.$row['ruta'].'" hidden id="photoRuta'.$row['id'].'">
             <script>
                 ModalQr("'.$row['ruta'].'",'.$row['id'].');
             </script>

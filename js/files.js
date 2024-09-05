@@ -23,7 +23,7 @@ function _(el) {
     ajax.send(formdata);
 
     function progressHandler(event) {
-
+      queryPhotos();
         _("loaded_n_total").innerHTML = "Cargado " + event.loaded + " bytes de " + event.total;
         var percent = (event.loaded / event.total) * 100;
         _("progressBar").value = Math.round(percent);
@@ -44,7 +44,7 @@ function _(el) {
       function abortHandler(event) {
         _("status").innerHTML = "Fallo en la subida";
       }
-    
+      
   }
 
   function queryPhotos(){
@@ -62,7 +62,7 @@ function _(el) {
 
     // var texto = concatenado.toString();
     // var texto = document.getElementById('photoRuta').value;
-    var texto = valor;
+    var texto = 'nexustechstudio.com/photonexus/docs/'+valor;
     document.getElementById('qrcode'+num).innerHTML = "";
 // aquí
 
@@ -79,18 +79,6 @@ var qrcode = new QRCode(document.getElementById("qrcode"+num), {
     // Crear un nuevo elemento de imagen para el logo
     var logo = new Image();
     logo.src = "imagen.png";
-
-    // Esperar a que el logo se cargue antes de dibujarlo en el canvas
-    logo.onload = function() {
-      // Calcular la posición del logo en el centro del código QR
-      var logoSize = qrcode._htOption.width * 0.2; // Tamaño relativo del logo (20%)
-      var xPos = (canvas.width - logoSize) / 2;
-      var yPos = (canvas.height - logoSize) / 2;
-
-      // Dibujar el logo en el canvas
-      var ctx = canvas.getContext("2d");
-      ctx.drawImage(logo, xPos, yPos, logoSize, logoSize);
-    };
 
     console.log();
 
