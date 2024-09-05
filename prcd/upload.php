@@ -2,15 +2,9 @@
     include('qc.php');
 
     date_default_timezone_set('America/Mexico_City');
-                  setlocale(LC_TIME, 'es_MX.UTF-8');
+    setlocale(LC_TIME, 'es_MX.UTF-8');
     
-    // $id=$_SESSION['id'];
-    $idUsr = $_POST['idUsuario'];
-    $doc = $_POST['documento'];
-    // $tipo_doc = 1;
-    $fecha_sistema = strftime("%Y-%m-%d,%H:%M:%S");
-    $link= 'archivo'.$doc;
-    // $validacion = 1;
+    // $doc = $_POST['documento'];
 
 $fileName = $_FILES["file"]["name"]; // The file name
 $fileTmpLoc = $_FILES["file"]["tmp_name"]; // File in the PHP tmp folder
@@ -25,14 +19,14 @@ if (!$fileTmpLoc) { // if file not chosen
 
 $archivo_ext=$_FILES['file']['name'];
 $extension = pathinfo($archivo_ext, PATHINFO_EXTENSION);
+$namePhoto = uniqid('photoNexus_', true) . '.' . $extension;
 
-    if(move_uploaded_file($_FILES["file"]["tmp_name"],"../../docs/". $link .'_'. $idUsr .'.'.$extension)){
+    if(move_uploaded_file($_FILES["file"]["tmp_name"],"../docs/". $namePhoto )){
     echo "$fileName carga completa";
     
-    $ruta = "docs/". $link .'_'. $idUsr .'.'.$extension;
-    // $sqlinsert= "UPDATE documentos SET link4='$ruta_pptx' WHERE id_usr='$curp'";
-    $sqlInsert= "INSERT INTO documentos (documento,id_ext,link,fecha) 
-    VALUES('$doc','$idUsr','$ruta','$fecha_sistema')";
+    $ruta = $namePhoto;
+    $sqlInsert= "INSERT INTO photo(ruta) 
+    VALUES('$namePhoto')";
     $resultado= $conn->query($sqlInsert);
     
     
