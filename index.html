@@ -60,6 +60,19 @@
       <div class="container">
         <h3>¿Qué foto deseas agregar?</h3>
         <form id="upload_form" enctype="multipart/form-data" method="post">
+
+          <div class="input-group mb-3">
+            <select class="form-select" name="" id="">
+              <option value="">Seleccione categoría</option>
+              <option value="1">Fotografía</option>
+              <option value="2">Música</option>
+              <option value="3">Diseño</option>
+              <option value="4">Comida</option>
+              <option value="5">Videojuegos</option>
+            </select>
+            <span class="input-group-text" id="basic-addon2">Categoría de la foto</span>
+          </div>
+          
           <div class="input-group mb-3">
             <input type="file" id="file" class="form-control" placeholder="Imagen" aria-label="Imagen" aria-describedby="basic-addon1" accept="image/*">
             <span class="input-group-text" id="basic-addon1"><i class="bi bi-image-fill"></i></span>
@@ -81,6 +94,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Archivo</th>
+              <th scope="col">Categoría</th>
               <th scope="col">Link</th>
               <th scope="col">Acción</th>
             </tr>

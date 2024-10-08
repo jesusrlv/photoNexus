@@ -1,7 +1,7 @@
 <?php
 
     $servername="localhost";
-    $database="photoNexus"; //solo se quitó para conexión remota
+    $database="photo_mayor_dome"; //solo se quitó para conexión remota
     $username="root";
     $password="";
 
